@@ -1,0 +1,25 @@
+{
+  "name": "R40",
+  "version": "0.0.0",
+  "main": "Gruntfile.js",
+  "license": "MIT",
+  "description": "A game inspired in the GGJ 2017",
+  "dependencies": {
+    "bootstrap": "^4.0.0-alpha.6",
+    "font-awesome": "^4.7.0",
+    "grunt": "^1.0.1",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-jade": "^1.0.0",
+    "grunt-contrib-less": "^1.4.1",
+    "grunt-contrib-uglify": "^2.2.1",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-zip": "^0.17.1",
+    "jquery": "^3.2.1",
+    "uglify-js": "^2.8.20"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "grunt build",
+    "start": "grunt"
+  }
+}
