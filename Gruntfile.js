@@ -1,5 +1,10 @@
 module.exports = function (grunt) {
   grunt.initConfig({
+    puglint: {
+      taskName: {
+        src: ['**/*.jade']
+      }
+    },
     less: {
       development: {
         options: {
@@ -51,28 +56,28 @@ module.exports = function (grunt) {
     copy: {
       main: {
         expand: true,
-        src: ['assets', 'index.html', 'R40.zip'],
+        src: ['assets/*', 'index.html', 'R40.zip'],
         dest: '/Users/Consalvo/Sites/'
       }
     },
     watch: {
       jade: {
         files: ['jade/**/*.jade', 'css/**/*.css', 'js/**/*.min.js'], // which files to watch
-        tasks: ['jade'],
+        tasks: ['jade', 'zip', 'copy'],
         options: {
           nospawn: true
         }
       },
       less: {
         files: ['less/**/*.less'], // which files to watch
-        tasks: ['less', 'jade'],
+        tasks: ['less', 'jade', 'zip', 'copy'],
         options: {
           nospawn: true
         }
       },
       uglify: {
         files: ['js/**/*.js', '!js/**/*.min.js'],
-        tasks: ['uglify', 'jade'],
+        tasks: ['uglify', 'jade', 'zip', 'copy'],
         options: {
           nospawn: true
         }
@@ -80,6 +85,7 @@ module.exports = function (grunt) {
     }
   })
 
+  grunt.loadNpmTasks('grunt-puglint')
   grunt.loadNpmTasks('grunt-contrib-copy')
   grunt.loadNpmTasks('grunt-zip')
   grunt.loadNpmTasks('grunt-contrib-less')
@@ -87,6 +93,6 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-jade')
   grunt.loadNpmTasks('grunt-contrib-watch')
 
-  grunt.registerTask('default', ['uglify', 'less', 'jade', 'zip', 'copy', 'watch'])
+  grunt.registerTask('default', ['puglint', 'uglify', 'less', 'jade', 'zip', 'copy', 'watch'])
   grunt.registerTask('build', ['uglify', 'less', 'jade', 'zip', 'copy'])
 }
